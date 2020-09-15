@@ -102,8 +102,8 @@ async function generateIndex(directoryPath, files) {
 
   fs.writeSync(fd, `${beginString}\n`);
 
-  if (config.support.eslint && searchJsFiles.length === 1) {
-    fs.writeSync(fd, '/* eslint-disable import/prefer-default-export */\n');
+  if (config.support.eslint) {
+    fs.writeSync(fd, '/* eslint-disable no-restricted-imports */\n');
   }
 
   searchJsFiles.map((fileName) => template.replace(/\$\$/g, fileName)).forEach((string) => {
